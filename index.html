@@ -5,71 +5,66 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Rock Paper Scissor</title>
 	</head>
-
+	<script defer src="script.js"></script>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+		}
+		main {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			justify-content: space-evenly;
+			height: 100vh;
+			gap: 80px;
+		}
+		.card {
+			width: 80%;
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+		}
+		h1 {
+			position: absolute;
+			top: 0;
+		}
+		.buttons {
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			gap: 50px;
+		}
+		button {
+			font-size: 4rem;
+		}
+		#score-player,
+		#score-computer {
+			font-size: 5rem;
+		}
+	</style>
 	<body>
 		<main>
 			<h1>Rock Paper Scissor</h1>
-			<p></p>
-			<div class="row">
-				<div class="col"></div>
-				<div class="col"></div>
-				<div class="col"></div>
+			<div class="card person">
+				<h2>PLAYER</h2>
+				<p id="player-result">0</p>
 			</div>
-			<div class="row">
-				<div class="col"></div>
-				<div class="col"></div>
-				<div class="col"></div>
+			<div>
+				<div id="round-result"></div>
+				<p id="actual-result"></p>
+				<div class="buttons">
+					<button id="Rock"></button>
+					<button id="Paper"></button>
+					<button id="Scissor"></button>
+				</div>
 			</div>
-			<div class="row">
-				<div class="col"></div>
-				<div class="col"></div>
-				<div class="col"></div>
+			<div class="card computer">
+				<h2>COMPUTER</h2>
+				<p id="computer-result">0</p>
 			</div>
 		</main>
 	</body>
-
-	<script>
-		const CHOICES = ['Rock', 'Paper', 'Scissor'];
-		function getComputerChoice() {
-			return CHOICES[Math.floor(Math.random() * CHOICES.length)];
-		}
-
-		function getPlayerChoice() {
-			return prompt('Rock, Paper, or Scissor?');
-		}
-
-		function getWinner(playerChoice, computerChoice) {
-			playerChoice = playerChoice.toLowerCase();
-			computerChoice = computerChoice.toLowerCase();
-			if (playerChoice === computerChoice) {
-				return 'Draw';
-			} else if (playerChoice === 'rock' && computerChoice === 'paper') {
-				return 'You Win';
-			} else if (playerChoice === 'paper' && computerChoice === 'scissor') {
-				return 'You Win';
-			} else if (playerChoice === 'scissor' && computerChoice === 'rock') {
-				return 'You Win';
-			} else {
-				return 'You Lose';
-			}
-		}
-
-		function game() {
-			let person = 0;
-			let computer = 0;
-			while (person < 5 && computer < 5) {
-				let playerChoice = getPlayerChoice();
-				let computerChoice = getComputerChoice();
-				let winner = getWinner(playerChoice, computerChoice);
-				console.log(winner);
-				if (winner == 'Draw') {
-					continue;
-				}
-				winner == 'You Win' ? person++ : computer++;
-			}
-			element = document.querySelector('p');
-			element.innerHTML = `You Win ${person} times and Computer Win ${computer} times`;
-		}
-		game();
-	</script>
 </html>
